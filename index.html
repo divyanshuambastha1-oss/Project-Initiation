@@ -1,30 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Typing Practice</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Srijan — Typing Practice</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <header>
-    <h1>Typing Practice</h1>
+  <header class="app-header">
+    <div class="brand">Srijan</div>
+    <nav class="nav">
+      <button class="nav-btn" data-target="#home">Home</button>
+      <button class="nav-btn" data-target="#practice">Practice</button>
+    </nav>
   </header>
 
-  <main>
-    <section class="typing-area">
-      <div id="text-display"></div>
-      <textarea id="input-field" placeholder="Start typing here..." autofocus></textarea>
+  <main class="app-main">
+    <!-- HOME -->
+    <section id="home" class="view active">
+      <div class="panel">
+        <h1 class="title">Welcome to Srijan</h1>
+        <p class="subtitle">
+          Learn to type with your own texts. Below is an on-screen keyboard with
+          finger zones. Keys will glow with the color of the finger typically used.
+        </p>
+
+        <div class="keyboard-wrap">
+          <div id="keyboard" class="keyboard"></div>
+          <div class="hands-legend">
+            <span class="legend chip finger-lp">Left Pinky</span>
+            <span class="legend chip finger-lr">Left Ring</span>
+            <span class="legend chip finger-lm">Left Middle</span>
+            <span class="legend chip finger-li">Left Index</span>
+            <span class="legend chip finger-ri">Right Index</span>
+            <span class="legend chip finger-rm">Right Middle</span>
+            <span class="legend chip finger-rr">Right Ring</span>
+            <span class="legend chip finger-rp">Right Pinky</span>
+            <span class="legend chip finger-th">Thumb (Space)</span>
+          </div>
+        </div>
+
+        <div class="cta">
+          <button class="primary go-practice" data-target="#practice">Start Practicing</button>
+        </div>
+      </div>
     </section>
 
-    <aside class="stats-panel">
-      <h2>Stats</h2>
-      <p>Time: <span id="time">0</span> s</p>
-      <p>Words per Minute (WPM): <span id="wpm">0</span></p>
-      <p>Accuracy: <span id="accuracy">100</span>%</p>
-      <button id="restart-btn">Restart</button>
-    </aside>
+    <!-- PRACTICE -->
+    <section id="practice" class="view">
+      <div class="practice-grid">
+        <div class="left">
+          <div class="controls">
+            <textarea id="customText" placeholder="Paste or type your text here (up to 1000 words)…"></textarea>
+            <div class="row">
+              <span id="wordCount">0 / 1000 words</span>
+              <div class="grow"></div>
+              <button id="loadBtn" class="secondary">Load Text</button>
+              <button id="startBtn" class="primary">Start Typing</button>
+              <button id="resetBtn" class="ghost">Reset</button>
+            </div>
+          </div>
+
+          <div class="reading-surface" id="readingSurface">
+            <div id="displayText" class="display-text" tabindex="-1"></div>
+          </div>
+
+          <div class="progress-wrap">
+            <div id="progressBar" class="progress-bar"><span></span></div>
+          </div>
+
+          <div class="stats">
+            <div><strong>Time:</strong> <span id="time">0s</span></div>
+            <div><strong>WPM:</strong> <span id="wpm">0</span></div>
+            <div><strong>Accuracy:</strong> <span id="accuracy">100%</span></div>
+            <div><strong>Errors:</strong> <span id="errors">0</span></div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="panel tight">
+            <h3 class="panel-title">On-screen Keyboard</h3>
+            <div id="practiceKeyboard" class="keyboard compact"></div>
+            <div class="hint">Current key and finger color highlight while you type.</div>
+          </div>
+        </div>
+      </div>
+      <!-- Hidden input to capture typing (lets UI stay clean) -->
+      <input id="hiddenInput" type="text" class="hidden-input" autocomplete="off" autocapitalize="off" spellcheck="false">
+    </section>
   </main>
+
+  <footer class="app-footer">
+    <span>© Srijan – practice smarter</span>
+  </footer>
 
   <script src="js/script.js"></script>
 </body>
